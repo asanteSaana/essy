@@ -6,7 +6,7 @@ export default function AboutPage() {
       maxWidth: 700,
       margin: "0 auto",
       padding: "2.5rem 1.5rem 2rem 1.5rem",
-      background: "transparent",
+      background: "#fff",
       minHeight: "70vh",
       display: 'flex',
       flexDirection: 'column',
@@ -34,6 +34,9 @@ export default function AboutPage() {
         margin: '0 auto',
         marginBottom: '1.5rem',
         lineHeight: 1.6,
+        background: "#fff",
+        borderRadius: "0.5rem",
+        padding: "1rem",
       }}>
         <span style={{ color: '#bfa14a', fontWeight: 700 }}>ESSY</span> is dedicated to empowering confidence and beauty with the finest hair extensions. Our mission is to deliver premium, ethically sourced hair that blends seamlessly and feels natural—so you can express your unique style every day.<br /><br />
         We believe in quality, luxury, and authenticity. Each ESSY extension is carefully selected and crafted for a flawless, long-lasting look. Join us on our journey to redefine hair beauty, one strand at a time.

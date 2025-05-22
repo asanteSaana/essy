@@ -136,11 +136,14 @@ export default function Home() {
 						maxWidth: 600,
 						margin: '0 auto',
 						marginBottom: '1.2rem',
+						background: '#fff', // white background
+						borderRadius: 8,
+						padding: '0.7rem 0',
 					}}
 				>
 					Discover our premium range of hair extensions for every style.<br />
-					<span style={{ color: '#7d6b2b', fontWeight: 700, fontSize: '1.1rem', letterSpacing: '0.04em' }}>
-						
+					<span style={{ color: '#7d6b2b', fontWeight: 700, fontSize: '1.1rem', letterSpacing: '0.04em', background: '#fff' }}>
+						Premium Quality • Ethically Sourced • Made for You
 					</span>
 				</p>
 				<button type="button" style={{
