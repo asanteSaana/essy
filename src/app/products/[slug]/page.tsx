@@ -1,6 +1,6 @@
 "use client";
+import { Box, Typography, Button } from "@mui/material";
 import { products } from "../../productsData";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -39,98 +39,44 @@ export default function ProductDetail({ params }: { params: Promise<{ slug: stri
 
   if (!product) {
     return (
-      <main style={{ padding: 40, textAlign: 'center', color: '#bfa14a' }}>
-        <h1>Product Not Found</h1>
-        <button onClick={() => router.push('/products')} style={{ marginTop: 24, background: '#bfa14a', color: '#fff', border: 'none', borderRadius: 8, padding: '0.7rem 1.5rem', fontWeight: 700, cursor: 'pointer' }}>Back to Products</button>
-      </main>
+      <Box sx={{ p: 5, textAlign: 'center', color: '#bfa14a' }}>
+        <Typography variant="h5">Product Not Found</Typography>
+        <Button onClick={() => router.push('/products')} sx={{ mt: 3, background: '#bfa14a', color: '#fff', borderRadius: 2, fontWeight: 700, px: 3, py: 1.5, '&:hover': { background: '#a88c36' } }}>Back to Products</Button>
+      </Box>
     );
   }
 
   return (
-    <main style={{
-      maxWidth: 700,
-      margin: "0 auto",
-      padding: "2.5rem 1.5rem 2rem 1.5rem",
-      background: "transparent",
-      minHeight: "70vh",
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textAlign: 'center',
-    }}>
-      <Image
-        src={product.image}
-        alt={product.name}
-        width={400}
-        height={220}
-        style={{
-          borderRadius: 16,
-          objectFit: "cover",
-          marginBottom: 24,
-          boxShadow: "0 2px 12px #bfa14a22",
-          width: '100%',
-          height: 'auto',
-          aspectRatio: '16/9',
-          maxHeight: 260,
-        }}
-      />
-      <h1 style={{
-        fontSize: "2rem",
-        fontWeight: 900,
-        color: "#bfa14a",
-        marginBottom: "1.2rem",
-        letterSpacing: "0.12em",
-        fontFamily: 'inherit',
-        textShadow: '0 2px 12px #bfa14a33',
-        lineHeight: 1.1,
-      }}>{product.name}</h1>
-      <p style={{
-        color: "#171717",
-        fontSize: "1.18rem",
-        fontWeight: 500,
-        maxWidth: 540,
-        margin: '0 auto',
-        marginBottom: '1.5rem',
-        lineHeight: 1.6,
-      }}>{product.description}</p>
+    <Box sx={{ maxWidth: 700, mx: 'auto', p: { xs: 1, md: 3 }, minHeight: '70vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
       <div style={{
-        marginTop: 12,
-        color: '#bfa14a',
-        fontWeight: 600,
-        fontSize: '1.05rem',
-        letterSpacing: '0.04em',
-        background: '#fffbe6',
-        borderRadius: 12,
-        padding: '1.1rem 1.5rem',
+        width: '100%',
+        aspectRatio: '16/9',
+        background: '#fff',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        border: 'none', // removed border line
+        borderRadius: 18,
+        marginBottom: 28,
         boxShadow: '0 2px 12px #bfa14a11',
-        maxWidth: 520,
-      }}>{writeup}</div>
-      <style>{`
-        @media (max-width: 600px) {
-          main[style] {
-            padding: 1.2rem 0.2rem 1.5rem 0.2rem !important;
-            border-radius: 10px !important;
-            box-shadow: 0 2px 12px #bfa14a22 !important;
-          }
-          h1[style] {
-            font-size: 1.3rem !important;
-          }
-          p[style] {
-            font-size: 1.01rem !important;
-          }
-          div[style*='background: #fffbe6'] {
-            font-size: 0.98rem !important;
-            padding: 0.7rem 0.7rem !important;
-          }
-          img {
-            height: 140px !important;
-            border-radius: 8px !important;
-            object-fit: cover !important;
-            aspect-ratio: 16/9 !important;
-          }
-        }
-      `}</style>
-    </main>
+      }}>
+        <img
+          src={product.image}
+          alt={product.name}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            borderRadius: 16,
+            display: 'block',
+            background: '#fff',
+          }}
+        />
+      </div>
+      <Typography variant="h4" sx={{ fontWeight: 900, color: '#bfa14a', mb: 2, letterSpacing: '0.12em', fontFamily: 'inherit', textShadow: '0 2px 12px #bfa14a33', lineHeight: 1.1, fontSize: { xs: '1.3rem', md: '2rem' } }}>{product.name}</Typography>
+      <Typography sx={{ color: '#000', background: '#fff', fontSize: { xs: '1.01rem', md: '1.18rem' }, fontWeight: 500, maxWidth: 540, mx: 'auto', mb: 3, lineHeight: 1.6 }}>{product.description}</Typography>
+      <Box sx={{ mt: 2, color: '#000', fontWeight: 600, fontSize: '1.05rem', letterSpacing: '0.04em', background: '#fff', borderRadius: 2, p: 2, boxShadow: '0 2px 12px #bfa14a11', maxWidth: 520, textAlign: 'justify' }}>{writeup}</Box>
+    </Box>
   );
 }

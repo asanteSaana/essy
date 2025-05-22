@@ -132,7 +132,7 @@ export default function Home() {
 			<section
 				style={{
 					display: "grid",
-					gridTemplateColumns: "repeat(3, 1fr)",
+					gridTemplateColumns: "repeat(2, 1fr)", // two per row
 					gap: "2.2rem",
 					maxWidth: 1000,
 					margin: '0 auto',
@@ -145,46 +145,53 @@ export default function Home() {
 						<div
 							key={product.name}
 							style={{
-								background: "#fff",
-								borderRadius: 20,
-								boxShadow: "0 4px 24px #bfa14a18",
-								padding: 28,
+								background: "none",
+								borderRadius: 0,
+								boxShadow: "none",
+								padding: 0,
 								textAlign: "center",
-								transition: "transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1)",
+								transition: "transform 0.3s cubic-bezier(.4,2,.6,1)",
 								cursor: "pointer",
 								height: "100%",
 								position: 'relative',
-								overflow: 'hidden',
+								overflow: 'visible',
 								animation: `cardFadeIn 0.7s ${0.2 + i * 0.08}s both`,
 							}}
 							onMouseOver={e => {
 								e.currentTarget.style.transform = 'translateY(-8px) scale(1.04)';
-								e.currentTarget.style.boxShadow = '0 8px 32px #bfa14a33';
 							}}
 							onMouseOut={e => {
 								e.currentTarget.style.transform = '';
-								e.currentTarget.style.boxShadow = '0 4px 24px #bfa14a18';
 							}}
 						>
 							<Link href={`/products/${slug}`} style={{ display: 'block' }}>
-								<Image
-									src={product.image}
-									alt={product.name}
-									width={400}
-									height={180}
-									style={{
-										borderRadius: 16,
-										objectFit: "cover",
-										marginBottom: 14,
-										boxShadow: "0 2px 12px #bfa14a22",
-										width: '100%',
-										height: 'auto',
-										aspectRatio: '16/9',
-										transition: 'box-shadow 0.3s',
-										display: 'block',
-										maxHeight: 220,
-									}}
-								/>
+								<div style={{
+									width: '100%',
+									aspectRatio: '16/9',
+									background: '#fff', // white background
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+									overflow: 'hidden',
+									borderRadius: 18,
+									marginBottom: 18,
+									boxShadow: '0 2px 12px #bfa14a11',
+								}}>
+									<Image
+										src={product.image}
+										alt={product.name}
+										width={400}
+										height={225}
+										style={{
+											width: '100%',
+											height: '100%',
+											objectFit: 'contain',
+											borderRadius: 0,
+											display: 'block',
+											background: '#fff', // white background for image
+										}}
+									/>
+								</div>
 							</Link>
 							<Link href={`/products/${slug}`} style={{ textDecoration: 'none' }}>
 								<h2
@@ -204,20 +211,6 @@ export default function Home() {
 									{product.name}
 								</h2>
 							</Link>
-							<p
-								style={{
-									color: "#171717",
-									fontSize: "1.01rem",
-									fontWeight: 500,
-									opacity: 0.95,
-									minHeight: 44,
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-								}}
-							>
-								{product.description}
-							</p>
 						</div>
 					);
 				})}
@@ -248,14 +241,17 @@ export default function Home() {
 				}
 				@media (max-width: 900px) {
 					section[style*='grid'] {
-						grid-template-columns: repeat(2, 1fr) !important;
+						grid-template-columns: 1fr !important;
 						gap: 1.2rem !important;
 					}
-					section[style*='grid'] img, section[style*='grid'] [style*='aspect-ratio'] {
-						height: 140px !important;
-						max-width: 100% !important;
-						object-fit: cover !important;
+					section[style*='grid'] > div > div {
 						aspect-ratio: 16/9 !important;
+						height: 140px !important;
+					}
+					section[style*='grid'] img {
+						object-fit: contain !important;
+						height: 100% !important;
+						width: 100% !important;
 					}
 				}
 				@media (max-width: 600px) {
@@ -268,35 +264,14 @@ export default function Home() {
 						grid-template-columns: 1fr !important;
 						gap: 0.7rem !important;
 					}
-					/* Product card tweaks */
-					section[style*='grid'] > div {
-						padding: 14px !important;
-						border-radius: 10px !important;
-					}
-					section[style*='grid'] img, section[style*='grid'] [style*='aspect-ratio'] {
-						max-width: 100% !important;
-						height: 120px !important;
-						border-radius: 8px !important;
-						object-fit: cover !important;
+					section[style*='grid'] > div > div {
 						aspect-ratio: 16/9 !important;
+						height: 120px !important;
 					}
-					/* Launch banner spacing */
-					div[style*='flex-direction:column'] {
-						margin-bottom: 1.2rem !important;
-						margin-top: 0.7rem !important;
-					}
-					/* Notify Me button */
-					a[style*='Notify Me'] {
-						font-size: 0.98rem !important;
-						padding: 0.7rem 1.2rem !important;
-						border-radius: 22px !important;
-					}
-					h1[style] {
-						font-size: 1.25rem !important;
-						padding: 0 0.1rem;
-						line-height: 1.15;
-						margin-bottom: 0.5rem !important;
-						letter-spacing: 0.08em !important;
+					section[style*='grid'] img {
+						object-fit: contain !important;
+						height: 100% !important;
+						width: 100% !important;
 					}
 				}
 			`}</style>

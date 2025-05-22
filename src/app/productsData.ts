@@ -44,4 +44,9 @@ export const products = [
     image: "/images/straightthree.jpg",
     description: "Easy-to-apply tape-in extensions for seamless length and volume.",
   },
+  {
+    name: "Bronde Balayage Extensions",
+    image: "/images/brondzefive.jpg",
+    description: "Chic bronde balayage extensions for a seamless, sunlit blend of brown and blonde tones.",
+  },
 ];

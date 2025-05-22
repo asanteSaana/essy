@@ -1,8 +1,17 @@
 'use client';
 
 import "./globals.css";
-import { useState } from "react";
+import { AppBar, Toolbar, IconButton, Typography, Box, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import Link from "next/link";
+import { useState } from "react";
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export default function RootLayout({
   children,
@@ -16,96 +25,60 @@ export default function RootLayout({
         className="antialiased"
         style={{ background: '#fff', color: '#bfa14a', fontFamily: 'system-ui, sans-serif' }}
       >
-        <header style={{ padding: '1.5rem 0', borderBottom: '1px solid #f5e9c5', marginBottom: '2rem', background: '#fff', boxShadow: '0 2px 12px #bfa14a11', position: 'sticky', top: 0, zIndex: 100 }}>
-          <nav style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            maxWidth: 1300,
-            margin: '0 auto',
-            padding: '0 2.5rem',
-            minHeight: 64,
-            gap: '2rem',
-            transition: 'box-shadow 0.3s',
-          }}>
-            <span style={{ fontWeight: 800, fontSize: '2rem', letterSpacing: '0.12em', color: '#bfa14a', flexShrink: 0, fontFamily: 'inherit', transition: 'color 0.2s' }}>
+        <AppBar position="sticky" elevation={0} sx={{ bgcolor: '#fff', color: '#bfa14a', borderBottom: '1px solid #f5e9c5', boxShadow: '0 2px 12px #bfa14a11', mb: 4 }}>
+          <Toolbar sx={{ maxWidth: 1300, mx: 'auto', width: '100%', px: { xs: 2, md: 5 }, minHeight: 64, display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, letterSpacing: '0.12em', color: '#bfa14a', fontFamily: 'inherit', flexShrink: 0 }}>
               <Link href="/" style={{ color: '#bfa14a', textDecoration: 'none' }}>ESSY</Link>
-            </span>
+            </Typography>
+            {/* Desktop nav */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 5, alignItems: 'center' }}>
+              {navLinks.map(link => (
+                <Link key={link.href} href={link.href} style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>{link.label}</Link>
+              ))}
+            </Box>
             {/* Hamburger for mobile */}
-            <button
+            <IconButton
               aria-label="Open menu"
               onClick={() => setSidebarOpen(true)}
-              style={{
-                display: 'none',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 8,
-                marginLeft: 'auto',
-              }}
+              sx={{ display: { xs: 'block', md: 'none' }, color: '#bfa14a', ml: 'auto', p: 1, background: 'none' }}
               className="essy-hamburger"
             >
-              <span style={{ display: 'block', width: 28, height: 3, background: '#bfa14a', borderRadius: 2, marginBottom: 6 }}></span>
-              <span style={{ display: 'block', width: 28, height: 3, background: '#bfa14a', borderRadius: 2, marginBottom: 6 }}></span>
-              <span style={{ display: 'block', width: 28, height: 3, background: '#bfa14a', borderRadius: 2 }}></span>
-            </button>
-            {/* Desktop nav */}
-            <div className="essy-desktop-nav" style={{ display: 'flex', gap: '3.5rem', alignItems: 'center' }}>
-              <Link href="/" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s', position: 'relative' }}>Home</Link>
-              <Link href="/products" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>Products</Link>
-              <Link href="/about" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>About</Link>
-              <Link href="/contact" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>Contact</Link>
-            </div>
-          </nav>
-          {/* Sidebar for mobile */}
-          {sidebarOpen && (
-            <div style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100vw',
-              height: '100vh',
-              background: 'rgba(0,0,0,0.25)',
-              zIndex: 9999,
-            }} onClick={() => setSidebarOpen(false)}>
-              <aside style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: 240,
-                height: '100vh',
-                background: '#fff',
-                boxShadow: '2px 0 16px #bfa14a22',
-                padding: '2.5rem 1.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '2.2rem',
-                zIndex: 10000,
-                animation: 'slideInSidebar 0.3s',
-              }} onClick={e => e.stopPropagation()}>
-                <button aria-label="Close menu" onClick={() => setSidebarOpen(false)} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', fontSize: 28, color: '#bfa14a', cursor: 'pointer', marginBottom: 24 }}>&times;</button>
-                <Link href="/" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>Home</Link>
-                <Link href="/products" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>Products</Link>
-                <Link href="/about" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>About</Link>
-                <Link href="/contact" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem' }}>Contact</Link>
-              </aside>
-            </div>
-          )}
-          <style>{`
-            @media (max-width: 800px) {
-              .essy-desktop-nav { display: none !important; }
-              .essy-hamburger { display: block !important; }
-            }
-            @media (min-width: 801px) {
-              .essy-desktop-nav { display: flex !important; }
-              .essy-hamburger { display: none !important; }
-            }
-            @keyframes slideInSidebar {
-              from { transform: translateX(-100%); }
-              to { transform: none; }
-            }
-          `}</style>
-        </header>
+              <MenuIcon fontSize="large" sx={{ color: '#bfa14a' }} />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        {/* Sidebar for mobile using MUI Drawer */}
+        <Drawer
+          anchor="left"
+          open={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+          PaperProps={{
+            sx: {
+              width: 240,
+              bgcolor: '#fff',
+              boxShadow: '2px 0 16px #bfa14a22',
+              p: 0,
+            },
+          }}
+        >
+          <List sx={{ mt: 4 }}>
+            {navLinks.map((link) => (
+              <ListItem key={link.href} disablePadding>
+                <ListItemButton component={Link} href={link.href} onClick={() => setSidebarOpen(false)}>
+                  <ListItemText
+                    primary={link.label}
+                    primaryTypographyProps={{
+                      fontWeight: 700,
+                      fontSize: '1.15rem',
+                      color: '#bfa14a',
+                      sx: { mb: 0.5 },
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
         {children}
       </body>
     </html>
