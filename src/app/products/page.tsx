@@ -1,5 +1,5 @@
 "use client";
-import { Card, CardActionArea, CardContent, CardMedia, Typography, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { products } from "../productsData";
 import Link from "next/link";
 
@@ -44,78 +44,48 @@ export default function ProductsPage() {
             .replace(/[^a-z0-9-]/g, "");
           return (
             <Box key={product.name}>
-              <Card
-                elevation={2}
+              <Box
                 sx={{
                   borderRadius: 3,
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
                   bgcolor: "#fff",
                   boxShadow: "0 4px 24px #bfa14a18",
+                  p: 2,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  transition: 'box-shadow 0.2s',
+                  '&:hover': { boxShadow: '0 8px 32px #bfa14a22' },
                 }}
+                component={Link}
+                href={`/products/${slug}`}
               >
-                <CardActionArea
-                  component={Link}
-                  href={`/products/${slug}`}
+                <Box
+                  component="img"
+                  src={product.image}
+                  alt={product.name}
                   sx={{
-                    flexGrow: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "stretch",
+                    width: "100%",
+                    height: { xs: 200, sm: 240, md: 270 },
+                    objectFit: "cover", // changed from 'contain' to 'cover' to reduce side space
+                    background: "#fff",
+                    borderRadius: 4,
+                    mb: 2,
+                  }}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: "#171717",
+                    fontWeight: 700,
+                    textAlign: "center",
+                    minHeight: 48,
+                    fontSize: { xs: "1rem", md: "1.18rem" },
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    image={product.image}
-                    alt={product.name}
-                    sx={{
-                      width: "100%",
-                      height: { xs: 160, sm: 180, md: 200 },
-                      objectFit: "contain",
-                      background: "#fff",
-                      borderRadius: 4,
-                      mt: 2,
-                    }}
-                  />
-                  <CardContent
-                    sx={{
-                      flexGrow: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      p: 2,
-                    }}
-                  >
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      component="div"
-                      sx={{
-                        color: "#171717",
-                        fontWeight: 700,
-                        textAlign: "center",
-                        minHeight: 48,
-                        fontSize: { xs: "1rem", md: "1.18rem" },
-                      }}
-                    >
-                      {product.name}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "#171717",
-                        opacity: 0.95,
-                        textAlign: "center",
-                        minHeight: 44,
-                        fontWeight: 500,
-                      }}
-                    >
-                      {product.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+                  {product.name}
+                </Typography>
+              </Box>
             </Box>
           );
         })}
