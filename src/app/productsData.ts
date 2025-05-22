@@ -49,4 +49,14 @@ export const products = [
     image: "/images/brondzefive.jpg",
     description: "Chic bronde balayage extensions for a seamless, sunlit blend of brown and blonde tones.",
   },
+  {
+    name: "Bone Straight 2 Extensions",
+    image: "/images/bonetwo.jpg",
+    description: "Ultra-sleek bone straight extensions for a flawless, glass-like finish.",
+  },
+  {
+    name: "Bronde Balayage 6 Extensions",
+    image: "/images/brondzesix.jpg",
+    description: "Rich bronde balayage extensions for a multidimensional, sunlit look.",
+  },
 ];

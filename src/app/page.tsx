@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { products } from "./productsData";
+import { Box, Typography } from "@mui/material";
 
 export default function Home() {
 	// Confetti state for client-only rendering
@@ -92,7 +93,39 @@ export default function Home() {
 						lineHeight: 1.1,
 					}}
 				>
-					🎉 ESSENCE BY ESSY 🎉
+					ESSENCE
+				</h1>
+        	<h5
+					style={{
+						fontSize: "1.7rem",
+						fontWeight: 900,
+						color: "#bfa14a", // solid gold
+						textAlign: "center",
+						marginBottom: "0.7rem",
+						letterSpacing: "0.12em",
+						fontFamily: 'inherit',
+						textShadow: '0 2px 12px #bfa14a33',
+						animation: 'popIn 1.2s cubic-bezier(.4,2,.6,1)',
+						lineHeight: 1.1,
+					}}
+				>
+					BY
+				</h5>
+        	<h1
+					style={{
+						fontSize: "3.7rem",
+						fontWeight: 900,
+						color: "#bfa14a", // solid gold
+						textAlign: "center",
+						marginBottom: "0.7rem",
+						letterSpacing: "0.12em",
+						fontFamily: 'inherit',
+						textShadow: '0 2px 12px #bfa14a33',
+						animation: 'popIn 1.2s cubic-bezier(.4,2,.6,1)',
+						lineHeight: 1.1,
+					}}
+				>
+					🎉ESSY 🎉
 				</h1>
 				<p
 					style={{
@@ -107,7 +140,7 @@ export default function Home() {
 				>
 					Discover our premium range of hair extensions for every style.<br />
 					<span style={{ color: '#7d6b2b', fontWeight: 700, fontSize: '1.1rem', letterSpacing: '0.04em' }}>
-						Launching soon! Sign up to be the first to know and get exclusive offers.
+						
 					</span>
 				</p>
 				<button type="button" style={{
@@ -126,95 +159,100 @@ export default function Home() {
 					border: 'none',
 					cursor: 'pointer',
 				}} disabled>
-					Coming Soon
+					Coming Soon!!!
 				</button>
 			</div>
-			<section
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(2, 1fr)", // two per row
-					gap: "2.2rem",
-					maxWidth: 1000,
-					margin: '0 auto',
-					zIndex: 5,
+			<Box
+				sx={{
+					maxWidth: 1200,
+					mx: "auto",
+					p: { xs: 1, md: 3 },
+					minHeight: "100vh",
+					bgcolor: "transparent",
 				}}
 			>
-				{products.map((product, i) => {
-					const slug = product.name.toLowerCase().replace(/ /g, "-").replace(/[^a-z0-9-]/g, "");
-					return (
-						<div
-							key={product.name}
-							style={{
-								background: "none",
-								borderRadius: 0,
-								boxShadow: "none",
-								padding: 0,
-								textAlign: "center",
-								transition: "transform 0.3s cubic-bezier(.4,2,.6,1)",
-								cursor: "pointer",
-								height: "100%",
-								position: 'relative',
-								overflow: 'visible',
-								animation: `cardFadeIn 0.7s ${0.2 + i * 0.08}s both`,
-							}}
-							onMouseOver={e => {
-								e.currentTarget.style.transform = 'translateY(-8px) scale(1.04)';
-							}}
-							onMouseOut={e => {
-								e.currentTarget.style.transform = '';
-							}}
-						>
-							<Link href={`/products/${slug}`} style={{ display: 'block' }}>
-								<div style={{
-									width: '100%',
-									aspectRatio: '16/9',
-									background: '#fff', // white background
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-									overflow: 'hidden',
-									borderRadius: 18,
-									marginBottom: 18,
-									boxShadow: '0 2px 12px #bfa14a11',
-								}}>
-									<Image
-										src={product.image}
-										alt={product.name}
-										width={400}
-										height={225}
-										style={{
-											width: '100%',
-											height: '100%',
-											objectFit: 'contain',
-											borderRadius: 0,
-											display: 'block',
-											background: '#fff', // white background for image
-										}}
-									/>
-								</div>
-							</Link>
-							<Link href={`/products/${slug}`} style={{ textDecoration: 'none' }}>
-								<h2
-									style={{
-										color: "#171717",
-										fontWeight: 700,
-										fontSize: "1.18rem",
-										margin: "1rem 0 0.5rem",
-										letterSpacing: '0.03em',
-										textShadow: 'none',
-										minHeight: 48,
+				{/* <Typography
+					variant="h3"
+					sx={{
+						fontWeight: 900,
+						color: "#bfa14a",
+						textAlign: "center",
+						mb: 4,
+						letterSpacing: "0.12em",
+						fontFamily: "inherit",
+						textShadow: "0 2px 12px #bfa14a33",
+						lineHeight: 1.1,
+						fontSize: { xs: "2rem", md: "2.2rem" },
+					}}
+				>
+					Our Hair Extensions
+				</Typography> */}
+				<Box
+					sx={{
+						display: "grid",
+						gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" },
+						gap: { xs: 3, md: 5 },
+					}}
+				>
+					{products.map((product) => {
+						const slug = product.name
+							.toLowerCase()
+							.replace(/ /g, "-")
+							.replace(/[^a-z0-9-]/g, "");
+						return (
+							<Box key={product.name} sx={{ width: '100%', maxWidth: 500, mx: 'auto' }}>
+								<Box
+									component={Link}
+									href={`/products/${slug}`}
+									sx={{
+										borderRadius: 5,
+										bgcolor: "#fff",
+										boxShadow: "0 6px 32px #bfa14a22",
+										p: 0,
 										display: 'flex',
+										flexDirection: 'column',
 										alignItems: 'center',
-										justifyContent: 'center',
+										cursor: 'pointer',
+										transition: 'box-shadow 0.2s',
+										'&:hover': { boxShadow: '0 12px 48px #bfa14a33' },
+										width: '100%',
+										minHeight: { xs: 340, sm: 400, md: 440 },
+										overflow: 'hidden',
 									}}
 								>
-									{product.name}
-								</h2>
-							</Link>
-						</div>
-					);
-				})}
-			</section>
+									<img
+										src={product.image}
+										alt={product.name}
+										style={{
+											width: '100%',
+											height: '340px',
+											objectFit: 'cover',
+											background: '#fff',
+											borderRadius: 0,
+											display: 'block',
+										}}
+									/>
+									<Typography
+										variant="h6"
+										sx={{
+											color: "#171717",
+											fontWeight: 700,
+											textAlign: "center",
+											minHeight: 48,
+											fontSize: { xs: "1.08rem", md: "1.22rem" },
+											py: 2,
+											width: '100%',
+											bgcolor: 'transparent',
+										}}
+									>
+										{product.name}
+									</Typography>
+								</Box>
+							</Box>
+						);
+					})}
+				</Box>
+			</Box>
 			<style>{`
 				@keyframes fadeInDown {
 					from { opacity: 0; transform: translateY(-30px); }

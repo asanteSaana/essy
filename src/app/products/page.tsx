@@ -34,7 +34,7 @@ export default function ProductsPage() {
         sx={{
           display: "grid",
           gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" },
-          gap: { xs: 2, md: 4 },
+          gap: { xs: 3, md: 5 },
         }}
       >
         {products.map((product) => {
@@ -43,34 +43,36 @@ export default function ProductsPage() {
             .replace(/ /g, "-")
             .replace(/[^a-z0-9-]/g, "");
           return (
-            <Box key={product.name}>
+            <Box key={product.name} sx={{ width: '100%', maxWidth: 500, mx: 'auto' }}>
               <Box
                 sx={{
-                  borderRadius: 3,
+                  borderRadius: 5,
                   bgcolor: "#fff",
-                  boxShadow: "0 4px 24px #bfa14a18",
-                  p: 2,
+                  boxShadow: "0 6px 32px #bfa14a22",
+                  p: 0,
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   cursor: 'pointer',
                   transition: 'box-shadow 0.2s',
-                  '&:hover': { boxShadow: '0 8px 32px #bfa14a22' },
+                  '&:hover': { boxShadow: '0 12px 48px #bfa14a33' },
+                  width: '100%',
+                  minHeight: { xs: 340, sm: 400, md: 440 },
+                  overflow: 'hidden',
                 }}
                 component={Link}
                 href={`/products/${slug}`}
               >
-                <Box
-                  component="img"
+                <img
                   src={product.image}
                   alt={product.name}
-                  sx={{
-                    width: "100%",
-                    height: { xs: 200, sm: 240, md: 270 },
-                    objectFit: "cover", // changed from 'contain' to 'cover' to reduce side space
-                    background: "#fff",
-                    borderRadius: 4,
-                    mb: 2,
+                  style={{
+                    width: '100%',
+                    height: '340px',
+                    objectFit: 'cover',
+                    background: '#fff',
+                    borderRadius: 0,
+                    display: 'block',
                   }}
                 />
                 <Typography
@@ -80,7 +82,10 @@ export default function ProductsPage() {
                     fontWeight: 700,
                     textAlign: "center",
                     minHeight: 48,
-                    fontSize: { xs: "1rem", md: "1.18rem" },
+                    fontSize: { xs: "1.08rem", md: "1.22rem" },
+                    py: 2,
+                    width: '100%',
+                    bgcolor: 'transparent',
                   }}
                 >
                   {product.name}
