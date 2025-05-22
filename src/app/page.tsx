@@ -223,18 +223,20 @@ export default function Home() {
 										overflow: 'hidden',
 									}}
 								>
-									<img
-										src={product.image}
-										alt={product.name}
-										style={{
-											width: '100%',
-											height: '340px',
-											objectFit: 'cover',
-											background: '#fff',
-											borderRadius: 0,
-											display: 'block',
-										}}
-									/>
+									<Image
+                    src={product.image}
+                    alt={product.name}
+                    width={800}
+                    height={340}
+                    style={{
+                      width: '100%',
+                      height: '340px',
+                      objectFit: 'cover',
+                      background: '#fff',
+                      borderRadius: 0,
+                      display: 'block',
+                    }}
+                  />
 									<Typography
 										variant="h6"
 										sx={{

@@ -3,6 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { products } from "../../productsData";
 import { useRouter } from "next/navigation";
 import React from "react";
+import Image from "next/image";
 
 const brandWriteups: Record<string, string> = {
   "straight-hair-extensions":
@@ -61,16 +62,18 @@ export default function ProductDetail({ params }: { params: Promise<{ slug: stri
         marginBottom: 28,
         boxShadow: '0 2px 12px #bfa14a11',
       }}>
-        <img
+        <Image
           src={product.image}
           alt={product.name}
+          width={800}
+          height={340}
           style={{
             width: '100%',
-            height: '100%',
-            objectFit: 'contain',
+            height: '340px',
+            objectFit: 'cover',
+            background: '#fff',
             borderRadius: 16,
             display: 'block',
-            background: '#fff',
           }}
         />
       </div>

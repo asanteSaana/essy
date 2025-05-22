@@ -2,6 +2,7 @@
 import { Typography, Box } from "@mui/material";
 import { products } from "../productsData";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductsPage() {
   return (
@@ -63,9 +64,11 @@ export default function ProductsPage() {
                 component={Link}
                 href={`/products/${slug}`}
               >
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
+                  width={800}
+                  height={340}
                   style={{
                     width: '100%',
                     height: '340px',
