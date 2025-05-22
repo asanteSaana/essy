@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function RootLayout({
   children,
@@ -28,7 +29,7 @@ export default function RootLayout({
             transition: 'box-shadow 0.3s',
           }}>
             <span style={{ fontWeight: 800, fontSize: '2rem', letterSpacing: '0.12em', color: '#bfa14a', flexShrink: 0, fontFamily: 'inherit', transition: 'color 0.2s' }}>
-              <a href="/" style={{ color: '#bfa14a', textDecoration: 'none' }}>ESSY</a>
+              <Link href="/" style={{ color: '#bfa14a', textDecoration: 'none' }}>ESSY</Link>
             </span>
             {/* Hamburger for mobile */}
             <button
@@ -50,10 +51,10 @@ export default function RootLayout({
             </button>
             {/* Desktop nav */}
             <div className="essy-desktop-nav" style={{ display: 'flex', gap: '3.5rem', alignItems: 'center' }}>
-              <a href="/" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s', position: 'relative' }}>Home</a>
-              <a href="/products" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>Products</a>
-              <a href="/about" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>About</a>
-              <a href="/contact" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>Contact</a>
+              <Link href="/" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s', position: 'relative' }}>Home</Link>
+              <Link href="/products" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>Products</Link>
+              <Link href="/about" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>About</Link>
+              <Link href="/contact" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.03em', transition: 'color 0.2s' }}>Contact</Link>
             </div>
           </nav>
           {/* Sidebar for mobile */}
@@ -83,10 +84,10 @@ export default function RootLayout({
                 animation: 'slideInSidebar 0.3s',
               }} onClick={e => e.stopPropagation()}>
                 <button aria-label="Close menu" onClick={() => setSidebarOpen(false)} style={{ alignSelf: 'flex-end', background: 'none', border: 'none', fontSize: 28, color: '#bfa14a', cursor: 'pointer', marginBottom: 24 }}>&times;</button>
-                <a href="/" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>Home</a>
-                <a href="/products" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>Products</a>
-                <a href="/about" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>About</a>
-                <a href="/contact" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem' }}>Contact</a>
+                <Link href="/" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>Home</Link>
+                <Link href="/products" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>Products</Link>
+                <Link href="/about" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem', marginBottom: 8 }}>About</Link>
+                <Link href="/contact" style={{ textDecoration: 'none', color: '#bfa14a', fontWeight: 700, fontSize: '1.15rem' }}>Contact</Link>
               </aside>
             </div>
           )}

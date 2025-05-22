@@ -110,7 +110,7 @@ export default function Home() {
 						Launching soon! Sign up to be the first to know and get exclusive offers.
 					</span>
 				</p>
-				<a href="#" style={{
+				<button type="button" style={{
 					display: 'inline-block',
 					background: '#bfa14a', // solid gold
 					color: '#fff',
@@ -123,9 +123,11 @@ export default function Home() {
 					marginTop: '0.5rem',
 					letterSpacing: '0.04em',
 					transition: 'background 0.2s',
-				}}>
+					border: 'none',
+					cursor: 'pointer',
+				}} disabled>
 					Coming Soon
-				</a>
+				</button>
 			</div>
 			<section
 				style={{
